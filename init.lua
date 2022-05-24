@@ -42,7 +42,7 @@ Config.DrawColor = {255, 255, 255, 255}
 Config.SuccessDrawColor = {98, 135, 236, 255}
 
 -- Enable outlines around the entity you're looking at
-Config.EnableOutline = false
+Config.EnableOutline = true
 
 -- The color of the outline in rgb, the first value is red, the second value is green, the third value is blue and the last value is alpha (opacity). Here is a link to a color picker to get these values: https://htmlcolorcodes.com/color-picker/
 Config.OutlineColor = {255, 255, 255, 255}
@@ -54,7 +54,7 @@ Config.MenuControlKey = 237
 Config.OpenKey = 'LMENU' -- Left Alt
 
 -- Supported values: 'ESX', 'QB', false
-Config.Framework = false
+Config.Framework = 'ESX'
 
 -------------------------------------------------------------------------------
 -- Functions
