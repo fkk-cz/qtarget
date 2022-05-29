@@ -137,7 +137,7 @@ CreateThread(function()
 				local finalcount = 0
 				local count = 0
 				if isTable then for _ in pairs(items) do finalcount += 1 end end
-				for _, v in pairs(ESX.PlayerData.inventory) do
+				for _, v in pairs(ESX.GetPlayerData().inventory) do
 					if isTable then
 						if isArray then -- Table expected in this format {'itemName1', 'itemName2', 'etc'}
 							for _, item in pairs(items) do
