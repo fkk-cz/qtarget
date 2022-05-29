@@ -131,8 +131,21 @@ exports('DrawOutlineEntity', DrawOutlineEntity)
 local function SetupOptions(datatable, entity, distance, isZone)
 	if not isZone then table_wipe(sendDistance) end
 	table_wipe(nuiData)
-	local slot = 0
+
+	local tmp = {}
 	for _, data in pairs(datatable) do
+		tmp[#tmp + 1] = data
+	end
+
+	table.sort(tmp,
+		function(a, b)
+			return a.label < b.label
+		end
+	)
+
+	local slot = 0
+	for i = 1, #tmp do
+		local data = tmp[i]
 		if CheckOptions(data, entity, distance) then
 			slot = data.num or slot + 1
 			sendData[slot] = data
