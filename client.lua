@@ -116,7 +116,7 @@ exports('DisableTarget', DisableTarget)
 ---@param entity number
 ---@param bool boolean
 local function DrawOutlineEntity(entity, bool)
-	if not Config.EnableOutline or IsEntityAPed(entity) then return end
+	if not Config.EnableOutline or IsEntityAPed(entity) or IsEntityAVehicle(entity) then return end
 	SetEntityDrawOutline(entity, bool)
 	SetEntityDrawOutlineColor(Config.OutlineColor[1], Config.OutlineColor[2], Config.OutlineColor[3], Config.OutlineColor[4])
 end
