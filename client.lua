@@ -295,6 +295,9 @@ local function EnableTarget()
 	if not allowTarget or success or (Config.Framework == 'QB' and not LocalPlayer.state.isLoggedIn) or IsNuiFocused() then return end
 	if not CheckOptions then CheckOptions = _ENV.CheckOptions end
 	if targetActive or not CheckOptions then return end
+	if IsPedDeadOrDying(PlayerPedId(), true) then return end
+	local currentVeh = GetVehiclePedIsIn(PlayerPedId(), false)
+	if currentVeh ~= 0 and GetVehicleClass(currentVeh) == 18 then return end
 
 	targetActive = true
 	playerPed = PlayerPedId()
@@ -309,6 +312,7 @@ local function EnableTarget()
 			DisableAllControlActions(0)
 			EnableControlAction(0, 30, true)
 			EnableControlAction(0, 31, true)
+			EnableControlAction(0, 249, true)
 
 			if not hasFocus then
 				EnableControlAction(0, 1, true)
