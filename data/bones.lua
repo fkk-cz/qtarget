@@ -89,29 +89,7 @@ if Config.EnableDefaultOptions then
 				return IsVehicleSeatFree(entity, -1) and exports["noire_assets"]:IsVehicleATrailer(veh)
 			end,
             distance = 1.5
-		},
-        {
-			event = "police:rackRifle",
-			icon = "fas fa-exchange-alt",
-			label = "Rack/Unrack Rifle",
-			job = {["lspd"] = 0, ["sahp"] = 0},
-			canInteract = function(veh)
-				return DoesEntityExist(veh) and IsEntityAVehicle(veh) and GetVehicleClass(veh) == 18 and HasPedGotWeapon(PlayerPedId(), `WEAPON_CARBINERIFLE`, false) and GetVehicleDoorAngleRatio(veh, 0) > 0.1
-			end,
-			index = 0,
-            distance = 1.5
-		},
-		{
-			event = "police:rackShotgun",
-			icon = "fas fa-exchange-alt",
-			label = "Rack/Unrack Shotgun",
-			job = {["lspd"] = 0, ["sahp"] = 0},
-			canInteract = function(veh)
-				return DoesEntityExist(veh) and IsEntityAVehicle(veh) and GetVehicleClass(veh) == 18 and HasPedGotWeapon(PlayerPedId(), `WEAPON_PUMPSHOTGUN`, false) and GetVehicleDoorAngleRatio(veh, 0) > 0.1
-			end,
-			index = 1,
-            distance = 1.5
-		},
+		}
     }
 
     -- Front passenger
@@ -126,29 +104,7 @@ if Config.EnableDefaultOptions then
                 ToggleDoor(entity, 1)
             end,
             distance = 1.2
-        },
-		{
-			event = "police:rackRifle",
-			icon = "fas fa-exchange-alt",
-			label = "Rack/Unrack Rifle",
-			job = {["lspd"] = 0, ["sahp"] = 0},
-			canInteract = function(veh)
-				return DoesEntityExist(veh) and IsEntityAVehicle(veh) and GetVehicleClass(veh) == 18 and HasPedGotWeapon(PlayerPedId(), `WEAPON_CARBINERIFLE`, false) and GetVehicleDoorAngleRatio(veh, 1) > 0.1
-			end,
-			index = 0,
-            distance = 1.5
-		},
-		{
-			event = "police:rackShotgun",
-			icon = "fas fa-exchange-alt",
-			label = "Rack/Unrack Shotgun",
-			job = {["lspd"] = 0, ["sahp"] = 0},
-			canInteract = function(veh)
-				return DoesEntityExist(veh) and IsEntityAVehicle(veh) and GetVehicleClass(veh) == 18 and HasPedGotWeapon(PlayerPedId(), `WEAPON_PUMPSHOTGUN`, false) and GetVehicleDoorAngleRatio(veh, 1) > 0.1
-			end,
-			index = 1,
-            distance = 1.5
-		}
+        }
     }
 
     -- Rear driver
@@ -227,32 +183,6 @@ if Config.EnableDefaultOptions then
             distance = 1.0
 		},
 		{
-            action = function(vehicle)
-                if GetVehicleDoorAngleRatio(vehicle, 5) < 0.1 then
-                    ToggleDoor(vehicle, BackEngineVehicles[GetEntityModel(vehicle)] and 4 or 5)
-                end
-                TriggerEvent("police:rackRifle")
-            end,
-			-- event = "police:rackRifle",
-			icon = "fas fa-exchange-alt",
-			label = "Rack/Unrack Rifle",
-			job = {["lspd"] = 0, ["sahp"] = 0},
-			canInteract = function(veh)
-				return GetVehicleClass(veh) == 18 and HasPedGotWeapon(PlayerPedId(), `WEAPON_CARBINERIFLE`, false)
-			end,
-            distance = 1.0
-		},
-		{
-			event = "police:rackShotgun",
-			icon = "fas fa-exchange-alt",
-			label = "Rack/Unrack Shotgun",
-			job = {["lspd"] = 0, ["sahp"] = 0},
-			canInteract = function(veh)
-				return GetVehicleClass(veh) == 18 and HasPedGotWeapon(PlayerPedId(), `WEAPON_PUMPSHOTGUN`, false)
-			end,
-			distance = 1.0
-		},
-		{
 			event = "shield:ToggleSwatShield",
 			icon = "fas fa-user-shield",
 			label = "Ballistic Shield",
@@ -279,7 +209,7 @@ if Config.EnableDefaultOptions then
 				return exports["noire_assets"]:IsVehicleATrailer(veh)
 			end,
             distance = 1.5
-		},
+		}
     }
 end
 
