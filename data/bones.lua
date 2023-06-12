@@ -51,8 +51,17 @@ if Config.EnableDefaultOptions then
                     TriggerServerEvent("qtarget:ToggleDoor", VehToNet(vehicle), door, "shut")
                 end
 			else
-                TaskOpenVehicleDoor(PlayerPedId(), vehicle, -1, door - 1, 1.0)
-                Citizen.Wait(1500)
+                local playAnim = true
+                local ped = GetPedInVehicleSeat(vehicle, door - 1)
+                if IsPedAPlayer(ped) and not IsEntityDead(ped) then
+                    playAnim = false
+                end
+
+                if playAnim then
+                    TaskOpenVehicleDoor(PlayerPedId(), vehicle, -1, door - 1, 1.0)
+                    Citizen.Wait(1500)
+                end
+
                 if NetworkGetEntityOwner(vehicle) == PlayerId() then
 				    SetVehicleDoorOpen(vehicle, door, false)
                 else
@@ -76,20 +85,8 @@ if Config.EnableDefaultOptions then
             action = function(entity)
                 ToggleDoor(entity, 0)
             end,
-            distance = 1.2
-        },
-        {
-			icon = "fas fa-door-open",
-			label = "Enter Trailer Seat",
-			action = function(entity)
-				TriggerServerEvent("trailer:forceEnterSeat", VehToNet(entity))
-			end,
-			canInteract = function(entity)
-				local model = GetEntityModel(entity)
-				return IsVehicleSeatFree(entity, -1) and exports["noire_assets"]:IsVehicleATrailer(veh)
-			end,
             distance = 1.5
-		}
+        }
     }
 
     -- Front passenger
@@ -103,7 +100,7 @@ if Config.EnableDefaultOptions then
             action = function(entity)
                 ToggleDoor(entity, 1)
             end,
-            distance = 1.2
+            distance = 1.5
         }
     }
 
