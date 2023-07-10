@@ -123,7 +123,7 @@ if Config.EnableDefaultOptions then
 			label = "Remove individual from rear seat",
 			job = {["lspd"] = 0, ["sahp"] = 0},
 			canInteract = function(veh) return DoesEntityExist(veh) and IsEntityAVehicle(veh) and not IsVehicleSeatFree(veh, 1) end,
-			index = 2,
+            distance = 1.5
 		}
     }
 
