@@ -86,7 +86,18 @@ if Config.EnableDefaultOptions then
                 ToggleDoor(entity, 0)
             end,
             distance = 1.5
-        }
+        },
+        {
+            action = function (entity)
+                exports.ox_inventory:openInventory('glovebox', { id = 'glove' .. GetVehicleNumberPlateText(entity), netid = VehToNet(entity) })
+            end,
+            canInteract = function (entity)
+                return GetVehicleClass(entity) == 18 and GetVehicleDoorAngleRatio(entity, 0) > 0.1
+            end,
+            icon = "fas fa-exchange-alt",
+			label = "Access Center Rack | Glovebox",
+            distance = 1.0
+		},
     }
 
     -- Front passenger
@@ -101,7 +112,18 @@ if Config.EnableDefaultOptions then
                 ToggleDoor(entity, 1)
             end,
             distance = 1.5
-        }
+        },
+        {
+            action = function (entity)
+                exports.ox_inventory:openInventory('glovebox', { id = 'glove' .. GetVehicleNumberPlateText(entity), netid = VehToNet(entity) })
+            end,
+            canInteract = function (entity)
+                return GetVehicleClass(entity) == 18 and GetVehicleDoorAngleRatio(entity, 2) > 0.1
+            end,
+            icon = "fas fa-exchange-alt",
+			label = "Access Center Rack | Glovebox",
+            distance = 1.0
+		},
     }
 
     -- Rear driver
@@ -170,15 +192,6 @@ if Config.EnableDefaultOptions then
             end,
             distance = 1.0
         },
-        {
-			icon = "fas fa-truck-loading",
-			label = "View Trunk Contents",
-			event = "openTrunkInventory",
-			canInteract = function(veh)
-				return Entity(veh).state.usingTrunk == nil
-			end,
-            distance = 1.0
-		},
 		{
 			event = "shield:ToggleSwatShield",
 			icon = "fas fa-user-shield",
