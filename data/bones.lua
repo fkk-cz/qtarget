@@ -140,6 +140,15 @@ if Config.EnableDefaultOptions then
             distance = 1.5
         },
         {
+			action = function(entity)
+                TaskEnterVehicle(PlayerPedId(), entity, 20000, 1, 2.0, 1)
+            end,
+			icon = "fa-solid fa-right-to-bracket",
+			label = "Enter Rear Seat",
+			canInteract = function(veh) return DoesEntityExist(veh) and IsVehicleSeatFree(veh, 1) and not IsSeatWarpOnly(veh, 1) end,
+            distance = 2.0
+		},
+        {
 			action = function(entity) if IsEntityAVehicle(entity) then TriggerEvent("police:RemoveIndividualFromVehicle", entity, 1) end end,
 			icon = "fas fa-level-down-alt",
 			label = "Remove individual from rear seat",
@@ -162,6 +171,15 @@ if Config.EnableDefaultOptions then
             end,
             distance = 1.5
         },
+        {
+			action = function(entity)
+                TaskEnterVehicle(PlayerPedId(), entity, 20000, 2, 2.0, 1)
+            end,
+			icon = "fa-solid fa-right-to-bracket",
+			label = "Enter Rear Seat",
+			canInteract = function(veh) return DoesEntityExist(veh) and IsVehicleSeatFree(veh, 2) and not IsSeatWarpOnly(veh, 2) end,
+            distance = 2.0
+		},
         {
 			action = function(entity) if IsEntityAVehicle(entity) then TriggerEvent("police:RemoveIndividualFromVehicle", entity, 2) end end,
 			icon = "fas fa-level-down-alt",
@@ -220,6 +238,20 @@ if Config.EnableDefaultOptions then
 			end,
             distance = 1.5
 		}
+    }
+
+    Bones.Options['windscreen_f'] = {
+        {
+            icon = "fa-solid fa-barcode",
+            label = "Inspect VIN",
+            action = function(veh)
+                TriggerEvent('noire_nui:alertDialog', 'VIN', Entity(veh).state.vin, true)
+            end,
+            canInteract = function (veh)
+                return Entity(veh).state.vin ~= nil
+            end,
+            distance = 1.0
+        },
     }
 end
 
