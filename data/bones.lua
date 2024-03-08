@@ -198,17 +198,6 @@ if Config.EnableDefaultOptions then
                 ToggleDoor(entity, BackEngineVehicles[GetEntityModel(entity)] and 5 or 4)
             end,
             distance = 0.9
-        },
-        {
-            icon = "fa-solid fa-barcode",
-            label = "Inspect VIN",
-            action = function(veh)
-                TriggerEvent('noire_nui:alertDialog', 'VIN', Entity(veh).state.vin, true)
-            end,
-            canInteract = function (veh)
-                return Entity(veh).state.vin ~= nil
-            end,
-            distance = 1.0
         }
     }
 
