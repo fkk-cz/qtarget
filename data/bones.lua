@@ -132,7 +132,7 @@ if Config.EnableDefaultOptions then
             icon = "fas fa-door-open",
             label = "Toggle Rear Door",
             canInteract = function(entity)
-                return GetEntityBoneIndexByName(entity, 'door_dside_r') ~= -1
+                return GetEntityBoneIndexByName(entity, 'door_dside_r') ~= -1 and not Entity(entity).state.firetruck
             end,
             action = function(entity)
                 ToggleDoor(entity, 2)
@@ -145,7 +145,7 @@ if Config.EnableDefaultOptions then
             end,
 			icon = "fa-solid fa-right-to-bracket",
 			label = "Enter Rear Seat",
-			canInteract = function(veh) return DoesEntityExist(veh) and IsVehicleSeatFree(veh, 1) and not IsSeatWarpOnly(veh, 1) end,
+			canInteract = function(veh) return DoesEntityExist(veh) and IsVehicleSeatFree(veh, 1) and not IsSeatWarpOnly(veh, 1) and not Entity(veh).state.firetruck end,
             distance = 2.0
 		},
         {
@@ -164,7 +164,7 @@ if Config.EnableDefaultOptions then
             icon = "fas fa-door-open",
             label = "Toggle Rear Door",
             canInteract = function(entity)
-                return GetEntityBoneIndexByName(entity, 'door_pside_r') ~= -1
+                return GetEntityBoneIndexByName(entity, 'door_pside_r') ~= -1 and not Entity(entity).state.firetruck
             end,
             action = function(entity)
                 ToggleDoor(entity, 3)
@@ -177,7 +177,7 @@ if Config.EnableDefaultOptions then
             end,
 			icon = "fa-solid fa-right-to-bracket",
 			label = "Enter Rear Seat",
-			canInteract = function(veh) return DoesEntityExist(veh) and IsVehicleSeatFree(veh, 2) and not IsSeatWarpOnly(veh, 2) end,
+			canInteract = function(veh) return DoesEntityExist(veh) and IsVehicleSeatFree(veh, 2) and not IsSeatWarpOnly(veh, 2) and not Entity(veh).state.firetruck end,
             distance = 2.0
 		},
         {
