@@ -220,24 +220,6 @@ if Config.EnableDefaultOptions then
 			end,
             distance = 1.0
 		},
-		{
-			action = function(veh) TriggerEvent("cl:updateTrailer", "open") end,
-			icon = "far fa-truck-ramp",
-			label = "Open Trailer Ramp",
-			canInteract = function(veh)
-				return exports["noire_assets"]:IsVehicleATrailer(veh)
-			end,
-            distance = 1.5
-		},
-		{
-			action = function(veh) TriggerEvent("cl:updateTrailer", "closed") end,
-			icon = "far fa-truck-ramp",
-			label = "Close Trailer Ramp",
-			canInteract = function(veh)
-				return exports["noire_assets"]:IsVehicleATrailer(veh)
-			end,
-            distance = 1.5
-		}
     }
 end
 
