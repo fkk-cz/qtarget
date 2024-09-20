@@ -221,6 +221,21 @@ if Config.EnableDefaultOptions then
             distance = 1.0
 		},
     }
+
+    Bones.Options['bodyshell'] = {
+        {
+            action = function()
+                exports.ox_inventory:openInventory('stash', 'lsfd_vehicle_inv')
+            end,
+            canInteract = function(veh)
+                return true
+            end,
+            -- job = { ['lsfd'] = 1 },
+            icon = "fa-solid fa-screwdriver-wrench",
+            label = "Open Storage",
+            distance = 2.5
+        },
+    }
 end
 
 return Bones
