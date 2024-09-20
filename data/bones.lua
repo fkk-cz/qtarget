@@ -152,7 +152,7 @@ if Config.EnableDefaultOptions then
 			action = function(entity) if IsEntityAVehicle(entity) then TriggerEvent("police:RemoveIndividualFromVehicle", entity, 1) end end,
 			icon = "fas fa-level-down-alt",
 			label = "Remove individual from rear seat",
-			job = {["lspd"] = 0, ["sahp"] = 0},
+			job = {["lspd"] = 0, ["sahp"] = 0, ["lscso"] = 0, ["lsfd"] = 0},
 			canInteract = function(veh) return DoesEntityExist(veh) and IsEntityAVehicle(veh) and not IsVehicleSeatFree(veh, 1) end,
             distance = 1.5
 		}
@@ -184,7 +184,7 @@ if Config.EnableDefaultOptions then
 			action = function(entity) if IsEntityAVehicle(entity) then TriggerEvent("police:RemoveIndividualFromVehicle", entity, 2) end end,
 			icon = "fas fa-level-down-alt",
 			label = "Remove individual from rear seat",
-			job = {["lspd"] = 0, ["sahp"] = 0},
+			job = {["lspd"] = 0, ["sahp"] = 0, ["lscso"] = 0, ["lsfd"] = 0},
 			canInteract = function(veh) return DoesEntityExist(veh) and IsEntityAVehicle(veh) and not IsVehicleSeatFree(veh, 2) end,
             distance = 1.5
 		}
@@ -214,7 +214,7 @@ if Config.EnableDefaultOptions then
 			event = "shield:ToggleSwatShield",
 			icon = "fas fa-user-shield",
 			label = "Ballistic Shield",
-			job = {["lspd"] = 1, ["sahp"] = 1},
+			job = {["lspd"] = 1, ["sahp"] = 1, ["lscso"] = 1},
 			canInteract = function(veh)
 				return GetVehicleClass(veh) == 18 and LocalPlayer.state.SWATAllowed
 			end,
