@@ -228,9 +228,9 @@ if Config.EnableDefaultOptions then
                 exports.ox_inventory:openInventory('stash', 'lsfd_vehicle_inv')
             end,
             canInteract = function(veh)
-                return true
+                return GetVehicleClass(veh) == 18 and Entity(veh).state.firetruck
             end,
-            -- job = { ['lsfd'] = 1 },
+            job = { ['lsfd'] = 1 },
             icon = "fa-solid fa-screwdriver-wrench",
             label = "Open Storage",
             distance = 2.5
